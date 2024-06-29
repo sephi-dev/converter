@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onDestroy, onMount } from "svelte";
   import type { Option } from "./schemas/option";
+	import { browser } from "$app/environment";
   
   export let options: Option[] = []
   export let onDropdownItemSelect: (item: Option) => void
@@ -39,13 +40,16 @@
   }
 
   onMount(() => {
-    document.addEventListener('click', handleClickOutside);
+    if (browser) {
+      document.addEventListener('click', handleClickOutside);
+    }
   });
 
   onDestroy(() => {
+    if (!browser) return
     document.removeEventListener('click', handleClickOutside);
   });
-
+ 
 </script>
 
 <div>
