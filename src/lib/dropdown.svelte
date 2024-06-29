@@ -77,7 +77,7 @@
     </button>
     {#if isDropdownOpen}
       <div
-        class="absolute z-10 w-full mt-2 bg-gray-900 border border-gray-700 rounded-md"
+        class="absolute z-10 w-full mt-2 bg-gray-900 border border-gray-700 rounded-md h-40 overflow-y-scroll"
         on:blur={handleDropdownFocusLoss}
       >
         {#each options as option}

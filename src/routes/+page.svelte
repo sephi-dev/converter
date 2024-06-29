@@ -2,16 +2,17 @@
 import Input from "$lib/input.svelte";
 import type { Option } from "$lib/schemas/option";
 
-let options = [
-  {
-    id: "bitcoin",
-    label: "BTC",
-  },
-  {
-    id: "ethereum",
-    label: "ETH",
-  },
-];
+export let data;
+let currencies = data.currencies;
+let coins = data.coins;
+let formattedCurrencies = currencies.map((currency: string) => ({
+  id: currency,
+  label: currency.toUpperCase(),
+}));
+let coinsList = data.coinsList.map((coin: string) => ({
+  id: coin,
+  label: coin.toUpperCase(),
+}));
 
 const handleDropdownItemSelect = (item: Option) => {
   console.log("Item selected", item);
@@ -32,22 +33,13 @@ const handleDropdownCurrencySelect = (item: Option) => {
       <Input
         label="Reference currency"
         name="reference_currency"
-        options={[
-          {
-            id: "usd",
-            label: "USD",
-          },
-          {
-            id: "eur",
-            label: "EUR",
-          }
-        ]}
+        options={formattedCurrencies}
         onDropdownItemSelect={handleDropdownCurrencySelect}
       />
       <Input
         label="Crypto"
         name="crypto"
-        options={options}
+        options={coinsList}
         onDropdownItemSelect={handleDropdownItemSelect}
       />
     </div>
