@@ -1,5 +1,5 @@
 <script>
-	import '../glossy/tailwind.css';
+  import "../glossy/tailwind.css";
 </script>
 
 <slot />
