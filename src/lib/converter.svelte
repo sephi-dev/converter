@@ -18,8 +18,8 @@
     label: coin.toUpperCase(),
   }));
 
-  let selectedCurrency = formattedCurrencies.find((currency) => currency.id === "usd");
-  let selectedCoin = coinsList.find((coin) => coin.id === "bitcoin");
+  let selectedCurrency = formattedCurrencies.find((currency: Option) => currency.id === "usd");
+  let selectedCoin = coinsList.find((coin: Option) => coin.id === "bitcoin");
   let currencyValue: number | string;
   let coinValue: number | string;
   let coinPrice: number;
