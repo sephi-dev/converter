@@ -13,7 +13,7 @@
     value = parseFloat((event.target as HTMLInputElement).value);
   };
 
-  export let value: number;
+  export let value: number | string = "";
 
   let inputElement: HTMLInputElement;
   let isFocused = false;
