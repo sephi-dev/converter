@@ -68,8 +68,16 @@
   }
 </script>
 
-<section class="flex items-center justify-center h-screen">
-  <section class="bg-gray-600/50 backdrop-blur-sm w-1/3 rounded-md">
+<section class="flex items-center justify-center h-screen relative">
+  <div class="backdrop-blur-sm bg-slate-600 absolute inset-0">
+    <enhanced:img
+      src="../lib/images/bg.webp"
+      alt="bg"
+      class="absolute inset-0 object-cover h-screen"
+    />
+    <div class="absolute inset-0 backdrop-blur-md bg-black/70" />
+  </div>
+  <section class="bg-gray-600/50 backdrop-blur-md w-1/3 rounded-md shadow-md">
     <div class="bg-black/25 p-3">
       <h2 class="font-light">Crypto <strong class="font-bold">CONVERTER</strong></h2>
     </div>

@@ -36,7 +36,6 @@ export async function load() {
     }
 
     const coinPrices = await coinPriceResponse.json();
-    console.info("Coin prices loaded:", coinPrices);
 
     return {
       currencies: vsCurrencies,
