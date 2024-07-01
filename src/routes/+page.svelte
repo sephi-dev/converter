@@ -3,8 +3,8 @@
   import Input from "$lib/input.svelte";
   import type { Option } from "$lib/schemas/option";
 
+  // Data Props coming from the +page.server
   export let data;
-
   let currencies = data.currencies;
   let coins = data.coins;
 
@@ -68,7 +68,7 @@
   }
 </script>
 
-<section class="flex items-center justify-center h-screen relative">
+<section class="flex items-center justify-center h-screen relative px-4">
   <div class="backdrop-blur-sm bg-slate-600 absolute inset-0">
     <enhanced:img
       src="../lib/images/bg.webp"
@@ -77,7 +77,9 @@
     />
     <div class="absolute inset-0 backdrop-blur-md bg-black/70" />
   </div>
-  <section class="bg-gray-600/50 backdrop-blur-md w-1/3 rounded-md shadow-md">
+  <section
+    class="bg-gray-600/50 backdrop-blur-md w-full md:w-1/2 lg:w-[500px] rounded-md shadow-md"
+  >
     <div class="bg-black/25 p-3">
       <h2 class="font-light">Crypto <strong class="font-bold">CONVERTER</strong></h2>
     </div>
@@ -112,7 +114,7 @@
           1 {selectedCurrency?.label} = {1 / coinPrice}
           {selectedCoin?.label}
         {/if}
-        <button on:click={handleSwitch} class="w-5 h-5 block cursor-pointer">
+        <button name="Switch" on:click={handleSwitch} class="w-5 h-5 block cursor-pointer">
           <Switch />
         </button>
       </p>
