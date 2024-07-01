@@ -8,8 +8,12 @@
   export let name: string;
   export let onDropdownItemSelect: (item: Option) => void;
   export let options: Option[] = [];
+  export let dropdownValue: Option;
+  export let handleChange = (event: Event) => {
+    value = parseFloat((event.target as HTMLInputElement).value);
+  };
 
-  let inputValue = "";
+  export let value: number | string = "";
 
   let inputElement: HTMLInputElement;
   let isFocused = false;
@@ -23,8 +27,8 @@
   }
 
   $: labelClasses = cx({
-    "translate-y-[-8px] text-xs": isFocused || inputValue,
-    "translate-y-[0] text-sm": !isFocused && !inputValue,
+    "translate-y-[-8px] text-xs": isFocused || value,
+    "translate-y-[0] text-sm": !isFocused && !value,
   });
 </script>
 
@@ -35,9 +39,10 @@
       id={name}
       {name}
       bind:this={inputElement}
-      bind:value={inputValue}
+      bind:value
       on:focus={handleFocus}
       on:blur={handleBlur}
+      on:input={handleChange}
       class="bg-gray-900 text-base md:text-sm focus:outline-none peer bg-transparent absolute right-10 inset-x-4 top-6 appearance-none"
     />
     <label
@@ -48,6 +53,6 @@
     </label>
   </div>
   <div class="w-fit">
-    <Dropdown {options} {onDropdownItemSelect} />
+    <Dropdown {options} {onDropdownItemSelect} {dropdownValue} />
   </div>
 </div>

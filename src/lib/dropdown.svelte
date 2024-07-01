@@ -5,6 +5,7 @@
 
   export let options: Option[] = [];
   export let onDropdownItemSelect: (item: Option) => void;
+  export let dropdownValue: Option;
 
   let selectedOption: Option | null = null;
   let isDropdownOpen = false;
@@ -56,7 +57,7 @@
       class="flex items-center justify-between w-fit px-4 py-2 text-sm text-left bg-transparent focus:outline-none border border-gray-700 rounded-md h-[54px]"
       on:click={handleDropdownClick}
     >
-      <span>{selectedOption ? selectedOption?.label : options[0].label}</span>
+      <span>{selectedOption ? selectedOption?.label : dropdownValue.label}</span>
       <svg
         class="w-4 h-4 transform transition-transform"
         aria-hidden="true"
