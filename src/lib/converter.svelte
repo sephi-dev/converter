@@ -75,7 +75,7 @@
   <div class="p-6 flex flex-col gap-4">
     {#if selectedCurrency}
       <Input
-        label="Reference currency"
+        label="Currency"
         name="reference_currency"
         value={currencyValue}
         handleChange={handleCurrencyValueChange}
@@ -86,7 +86,7 @@
     {/if}
     {#if selectedCoin}
       <Input
-        label="Crypto"
+        label="Token"
         name="crypto"
         value={coinValue}
         handleChange={handleCoinValueChange}

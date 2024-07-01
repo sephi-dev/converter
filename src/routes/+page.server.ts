@@ -1,6 +1,6 @@
 import { COINGECKO_API_KEY } from "$env/static/private";
 
-const COINGECKO_API_URL = "https://pro-api.coingecko.com/api/v3";
+const COINGECKO_API_URL = "https://api.coingecko.com/api/v3/";
 
 export async function load() {
   const coinsList = ["bitcoin", "ethereum", "usd-coin", "tether", "polkadot", "starknet"];
@@ -8,7 +8,7 @@ export async function load() {
     method: "GET",
     headers: {
       accept: "application/json",
-      "x-cg-pro-api-key": COINGECKO_API_KEY,
+      "x-cg-demo-api-key": COINGECKO_API_KEY,
     },
   };
 
