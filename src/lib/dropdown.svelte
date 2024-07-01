@@ -10,6 +10,10 @@
   let selectedOption: Option | null = null;
   let isDropdownOpen = false;
   let dropdownElement: HTMLElement | null = null;
+  let filterText = '';
+
+  $: filteredOptions = options.filter(option =>
+    option.label.toLowerCase().includes(filterText.toLowerCase()));
 
   type Targets = {
     relatedTarget: EventTarget | null;
@@ -32,7 +36,7 @@
   };
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (dropdownElement && !dropdownElement.contains(event.target as Node)) {
+    if (dropdownElement && !dropdownElement.contains(event.target as Node) && !String(event.target).includes("HTMLInputElement")) {
       isDropdownOpen = false;
     }
   };
@@ -77,7 +81,13 @@
         class="absolute z-10 w-full mt-2 bg-gray-900 border border-gray-700 rounded-md h-40 overflow-y-scroll"
         on:blur={handleDropdownFocusLoss}
       >
-        {#each options as option}
+        <input
+          type="text"
+          bind:value={filterText}
+          class="w-full px-4 py-2 bg-gray-900 text-base md:text-sm focus:outline-none peer bg-transparent border-b border-b-white/50"
+          placeholder="Filter options..."
+        />
+        {#each filteredOptions as option}
           <button
             on:click={() => handleDropdownItemSelect(option)}
             type="button"
